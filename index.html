@@ -19,11 +19,8 @@
             --text: #f1ebe0;
             --text-muted: #7a7568;
             --border: #1a2440;
-            --player-bg: #0a1122;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--bg);
@@ -33,825 +30,356 @@
             padding-bottom: 100px;
         }
 
-        /* خلفية الجسيمات الذهبية */
         #particles-canvas {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            z-index: 0; pointer-events: none;
         }
 
-        /* نمط هندسي إسلامي */
         .islamic-pattern {
-            position: fixed;
-            top: 0; left: 0;
+            position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            z-index: 0; pointer-events: none;
             opacity: 0.025;
             background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c8a951' stroke-width='0.5'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z'/%3E%3Cpath d='M40 10 L70 40 L40 70 L10 40Z'/%3E%3Cpath d='M40 20 L60 40 L40 60 L20 40Z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3C/g%3E%3C/svg%3E");
             background-size: 80px 80px;
         }
 
-        /* تدرجات الخلفية */
         .bg-glow {
-            position: fixed;
-            width: 600px; height: 600px;
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.07;
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; width: 600px; height: 600px;
+            border-radius: 50%; filter: blur(150px);
+            opacity: 0.07; pointer-events: none; z-index: 0;
         }
         .bg-glow-1 { top: -200px; right: -200px; background: var(--gold); }
         .bg-glow-2 { bottom: -200px; left: -200px; background: var(--emerald); }
 
-        /* الهيدر */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
             background: rgba(6, 11, 24, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 0 2rem; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .logo { display: flex; align-items: center; gap: 12px; }
         .logo-icon {
             width: 42px; height: 42px;
             background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: var(--bg);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: var(--bg);
             box-shadow: 0 4px 15px rgba(200, 169, 81, 0.3);
         }
-
         .logo-text {
-            font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 1px;
+            font-family: 'Amiri', serif; font-size: 1.5rem;
+            font-weight: 700; color: var(--gold); letter-spacing: 1px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-        }
-
+        .nav-links { display: flex; gap: 8px; }
         .nav-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            padding: 8px 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            background: transparent; border: 1px solid transparent;
+            color: var(--text-muted); padding: 8px 18px; border-radius: 10px;
+            cursor: pointer; font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem; font-weight: 600;
+            transition: all 0.3s; display: flex; align-items: center; gap: 6px;
         }
-
         .nav-btn:hover, .nav-btn.active {
-            color: var(--gold);
-            background: rgba(200, 169, 81, 0.08);
+            color: var(--gold); background: rgba(200, 169, 81, 0.08);
             border-color: rgba(200, 169, 81, 0.2);
         }
 
-        /* المحتوى الرئيسي */
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-        }
+        .content-wrapper { position: relative; z-index: 1; }
 
-        /* قسم الهيرو */
-        .hero {
-            text-align: center;
-            padding: 5rem 2rem 3rem;
-            position: relative;
-        }
-
-        .hero-ornament {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            position: relative;
-        }
-
-        .hero-ornament svg {
-            width: 100%;
-            height: 100%;
-            animation: slowRotate 30s linear infinite;
-        }
-
-        @keyframes slowRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
+        .hero { text-align: center; padding: 5rem 2rem 3rem; position: relative; }
+        .hero-ornament { width: 200px; height: 200px; margin: 0 auto 2rem; position: relative; }
+        .hero-ornament svg { width: 100%; height: 100%; animation: slowRotate 30s linear infinite; }
+        @keyframes slowRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .hero-ornament::after {
-            content: '﷽';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Amiri', serif;
-            font-size: 2rem;
-            color: var(--gold);
+            content: '\FDFD'; position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Amiri', serif; font-size: 2rem; color: var(--gold);
         }
-
         .hero h1 {
-            font-family: 'Amiri', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 1rem;
+            font-family: 'Amiri', serif; font-size: 3.5rem; font-weight: 700;
+            color: var(--gold); margin-bottom: 1rem;
             text-shadow: 0 0 40px rgba(200, 169, 81, 0.2);
         }
-
         .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.8;
+            color: var(--text-muted); font-size: 1.1rem;
+            max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.8;
         }
+        .stats-row { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 900; color: var(--gold); display: block; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
 
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-num {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--gold);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* قسم القراء */
-        .section {
-            padding: 2rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
+        .section { padding: 2rem; max-width: 1300px; margin: 0 auto; }
         .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
         }
-
         .section-title {
-            font-family: 'Amiri', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-family: 'Amiri', serif; font-size: 1.8rem;
+            color: var(--gold); display: flex; align-items: center; gap: 10px;
         }
+        .section-title i { font-size: 1.2rem; opacity: 0.6; }
 
-        .section-title i {
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-
-        /* فلاتر الحروف */
         .letter-filters {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            padding: 0 2rem;
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
+            display: flex; gap: 6px; flex-wrap: wrap;
+            margin-bottom: 1.5rem; padding: 0 2rem;
+            max-width: 1300px; margin-left: auto; margin-right: auto;
         }
-
         .letter-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            color: var(--text-muted);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 40px; height: 40px; border-radius: 10px;
+            border: 1px solid var(--border); background: var(--bg-card);
+            color: var(--text-muted); font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem; font-weight: 700; cursor: pointer;
+            transition: all 0.3s; display: flex; align-items: center; justify-content: center;
         }
-
-        .letter-btn:hover {
-            border-color: var(--gold-dim);
-            color: var(--gold);
-        }
-
+        .letter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
         .letter-btn.active {
             background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-            color: var(--bg);
-            border-color: var(--gold);
+            color: var(--bg); border-color: var(--gold);
             box-shadow: 0 4px 15px rgba(200, 169, 81, 0.3);
         }
 
-        /* شبكة القراء */
-        .reciters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
+        .reciters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
         .reciter-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            cursor: pointer;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.5rem; cursor: pointer;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
-
         .reciter-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
+            content: ''; position: absolute; top: 0; left: 0;
             width: 100%; height: 3px;
             background: linear-gradient(90deg, var(--gold), var(--emerald-light), var(--gold));
-            opacity: 0;
-            transition: opacity 0.3s;
+            opacity: 0; transition: opacity 0.3s;
         }
-
         .reciter-card:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(200, 169, 81, 0.3);
+            background: var(--bg-card-hover); border-color: rgba(200, 169, 81, 0.3);
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(200, 169, 81, 0.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(200,169,81,0.05);
         }
-
         .reciter-card:hover::before { opacity: 1; }
-
-        .reciter-card .rc-top {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 12px;
-        }
-
+        .reciter-card .rc-top { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
         .reciter-avatar {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(200, 169, 81, 0.15), rgba(15, 118, 110, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--gold);
-            flex-shrink: 0;
-            border: 1px solid rgba(200, 169, 81, 0.2);
+            width: 52px; height: 52px; border-radius: 14px;
+            background: linear-gradient(135deg, rgba(200,169,81,0.15), rgba(15,118,110,0.15));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: var(--gold); flex-shrink: 0;
+            border: 1px solid rgba(200,169,81,0.2);
         }
-
-        .reciter-info h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-
-        .reciter-info span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .reciter-meta {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
+        .reciter-info h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+        .reciter-info span { font-size: 0.8rem; color: var(--text-muted); }
+        .reciter-meta { display: flex; gap: 12px; flex-wrap: wrap; }
         .reciter-meta .meta-tag {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 8px;
-            background: rgba(200, 169, 81, 0.08);
-            color: var(--gold-dim);
-            border: 1px solid rgba(200, 169, 81, 0.1);
+            font-size: 0.75rem; padding: 4px 10px; border-radius: 8px;
+            background: rgba(200,169,81,0.08); color: var(--gold-dim);
+            border: 1px solid rgba(200,169,81,0.1);
         }
-
-        /* قسم السور */
-        .surahs-section {
-            display: none;
-        }
-
-        .surahs-section.visible {
-            display: block;
-            animation: fadeSlideIn 0.5s ease;
-        }
-
-        @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 10px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-bottom: 1.5rem;
-        }
-
-        .back-btn:hover {
-            border-color: var(--gold-dim);
-            color: var(--gold);
-        }
-
-        .current-reciter-name {
-            font-family: 'Amiri', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 1.5rem;
-            max-width: 400px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px 12px 44px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            color: var(--text);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--gold-dim);
-            box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.1);
-        }
-
-        .search-box input::placeholder { color: var(--text-muted); }
-
-        .search-box i {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        .surahs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-        }
-
-        .surah-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .surah-card:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(200, 169, 81, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .surah-card.playing {
-            border-color: var(--gold);
-            background: rgba(200, 169, 81, 0.08);
-            box-shadow: 0 0 25px rgba(200, 169, 81, 0.1);
-        }
-
-        .surah-num {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--gold-dim);
-            margin-bottom: 6px;
-            font-family: 'Amiri', serif;
-        }
-
-        .surah-card.playing .surah-num { color: var(--gold); }
-
-        .surah-name {
-            font-family: 'Amiri', serif;
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-
-        .surah-verses {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .surah-card .play-icon {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            background: rgba(200, 169, 81, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--gold-dim);
-            opacity: 0;
-            transition: all 0.3s;
-        }
-
-        .surah-card:hover .play-icon,
-        .surah-card.playing .play-icon { opacity: 1; }
-
-        .surah-card.playing .play-icon {
-            background: var(--gold);
-            color: var(--bg);
-        }
-
-        /* المفضلة */
-        .favorites-section { display: none; }
-        .favorites-section.visible {
-            display: block;
-            animation: fadeSlideIn 0.5s ease;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-muted);
-        }
-
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--gold-dim);
-            opacity: 0.4;
-        }
-
-        .empty-state p {
-            font-size: 1.1rem;
-        }
-
-        /* المشغل */
-        .player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-            background: rgba(10, 17, 34, 0.95);
-            backdrop-filter: blur(30px);
-            border-top: 1px solid var(--border);
-            padding: 0;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .player.visible {
-            transform: translateY(0);
-        }
-
-        .player-progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(200, 169, 81, 0.1);
-            cursor: pointer;
-            position: relative;
-            transition: height 0.2s;
-        }
-
-        .player-progress-bar:hover { height: 6px; }
-
-        .player-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-            border-radius: 0 3px 3px 0;
-            width: 0%;
-            position: relative;
-            transition: width 0.1s linear;
-        }
-
-        .player-progress-fill::after {
-            content: '';
-            position: absolute;
-            left: 0; top: -3px;
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 10px rgba(200, 169, 81, 0.5);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .player-progress-bar:hover .player-progress-fill::after { opacity: 1; }
-
-        .player-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 2rem;
-            gap: 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .player-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 200px;
-        }
-
-        .player-cover {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(200, 169, 81, 0.2), rgba(15, 118, 110, 0.2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--gold);
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .player-cover .spin-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid transparent;
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 3s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .player-cover.spinning .spin-ring { opacity: 1; }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .player-text h4 {
-            font-family: 'Amiri', serif;
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 2px;
-        }
-
-        .player-text span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .player-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ctrl-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ctrl-btn:hover { color: var(--gold); background: rgba(200, 169, 81, 0.08); }
-
-        .ctrl-btn.play-pause {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-            color: var(--bg);
-            font-size: 1.2rem;
-            box-shadow: 0 4px 20px rgba(200, 169, 81, 0.35);
-        }
-
-        .ctrl-btn.play-pause:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 30px rgba(200, 169, 81, 0.5);
-            color: var(--bg);
-        }
-
-        .ctrl-btn.active-repeat { color: var(--emerald-light); }
-
-        .player-extra {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 200px;
-            justify-content: flex-end;
-        }
-
-        .time-display {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-variant-numeric: tabular-nums;
-            direction: ltr;
-        }
-
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            width: 80px;
-            height: 4px;
-            border-radius: 4px;
-            background: rgba(200, 169, 81, 0.15);
-            outline: none;
-            direction: ltr;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--gold);
-            cursor: pointer;
-            box-shadow: 0 0 6px rgba(200, 169, 81, 0.4);
-        }
-
-        /* التوست */
-        .toast-container {
-            position: fixed;
-            top: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 300;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .toast {
-            background: rgba(13, 21, 37, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s forwards;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .toast i { color: var(--gold); }
-
-        @keyframes toastIn {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes toastOut {
-            from { opacity: 1; }
-            to { opacity: 0; transform: translateY(-10px); }
-        }
-
-        /* تحميل */
-        .loader {
-            display: flex;
-            justify-content: center;
-            padding: 4rem;
-        }
-
-        .loader-spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--border);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        /* المفضلة زر */
-        .fav-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-        }
-
-        .surah-card:hover .fav-btn { opacity: 1; }
-        .fav-btn.active { opacity: 1; color: #ef4444; }
-
-        /* المفضلة في بطاقة القارئ */
         .reciter-fav {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            border: none;
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 12px; left: 12px;
+            width: 32px; height: 32px; border-radius: 8px;
+            border: none; background: transparent; color: var(--text-muted);
+            cursor: pointer; font-size: 0.85rem; transition: all 0.3s;
+            opacity: 0; display: flex; align-items: center; justify-content: center;
         }
-
         .reciter-card:hover .reciter-fav { opacity: 1; }
         .reciter-fav.active { opacity: 1; color: #ef4444; }
 
-        /* ريسبونسف */
+        .surahs-section { display: none; }
+        .surahs-section.visible { display: block; animation: fadeSlideIn 0.5s ease; }
+        @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; border: 1px solid var(--border);
+            color: var(--text-muted); padding: 10px 20px; border-radius: 12px;
+            cursor: pointer; font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem; font-weight: 600; transition: all 0.3s; margin-bottom: 1.5rem;
+        }
+        .back-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+        .current-reciter-name { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
+
+        .search-box { position: relative; margin-bottom: 1.5rem; max-width: 400px; }
+        .search-box input {
+            width: 100%; padding: 12px 20px 12px 44px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--bg-card);
+            color: var(--text); font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem; outline: none; transition: all 0.3s;
+        }
+        .search-box input:focus { border-color: var(--gold-dim); box-shadow: 0 0 0 3px rgba(200,169,81,0.1); }
+        .search-box input::placeholder { color: var(--text-muted); }
+        .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        .surahs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .surah-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.2rem; cursor: pointer;
+            transition: all 0.3s; text-align: center; position: relative; overflow: hidden;
+        }
+        .surah-card:hover {
+            background: var(--bg-card-hover); border-color: rgba(200,169,81,0.3);
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .surah-card.playing {
+            border-color: var(--gold); background: rgba(200,169,81,0.08);
+            box-shadow: 0 0 25px rgba(200,169,81,0.1);
+        }
+        .surah-num { font-size: 1.8rem; font-weight: 900; color: var(--gold-dim); margin-bottom: 6px; font-family: 'Amiri', serif; }
+        .surah-card.playing .surah-num { color: var(--gold); }
+        .surah-name { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--text); margin-bottom: 4px; }
+        .surah-verses { font-size: 0.75rem; color: var(--text-muted); }
+        .surah-card .play-icon {
+            position: absolute; top: 10px; left: 10px;
+            width: 28px; height: 28px; border-radius: 8px;
+            background: rgba(200,169,81,0.1); display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; color: var(--gold-dim); opacity: 0; transition: all 0.3s;
+        }
+        .surah-card:hover .play-icon, .surah-card.playing .play-icon { opacity: 1; }
+        .surah-card.playing .play-icon { background: var(--gold); color: var(--bg); }
+        .fav-btn {
+            position: absolute; top: 10px; right: 10px;
+            width: 30px; height: 30px; border-radius: 8px;
+            border: none; background: transparent; color: var(--text-muted);
+            cursor: pointer; font-size: 0.8rem; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; opacity: 0;
+        }
+        .surah-card:hover .fav-btn { opacity: 1; }
+        .fav-btn.active { opacity: 1; color: #ef4444; }
+
+        .favorites-section { display: none; }
+        .favorites-section.visible { display: block; animation: fadeSlideIn 0.5s ease; }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+        .empty-state i { font-size: 3rem; margin-bottom: 1rem; color: var(--gold-dim); opacity: 0.4; }
+        .empty-state p { font-size: 1.1rem; }
+
+        .player {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+            background: rgba(10, 17, 34, 0.95); backdrop-filter: blur(30px);
+            border-top: 1px solid var(--border);
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .player.visible { transform: translateY(0); }
+        .player-progress-bar {
+            width: 100%; height: 4px;
+            background: rgba(200,169,81,0.1);
+            cursor: pointer; position: relative; transition: height 0.2s;
+        }
+        .player-progress-bar:hover { height: 6px; }
+        .player-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+            border-radius: 0 3px 3px 0; width: 0%;
+            position: relative; transition: width 0.1s linear;
+        }
+        .player-progress-fill::after {
+            content: ''; position: absolute; left: 0; top: -3px;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--gold); box-shadow: 0 0 10px rgba(200,169,81,0.5);
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .player-progress-bar:hover .player-progress-fill::after { opacity: 1; }
+        .player-content {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 2rem; gap: 1rem; max-width: 1400px; margin: 0 auto;
+        }
+        .player-info { display: flex; align-items: center; gap: 14px; min-width: 200px; }
+        .player-cover {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: linear-gradient(135deg, rgba(200,169,81,0.2), rgba(15,118,110,0.2));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--gold); flex-shrink: 0;
+            position: relative; overflow: hidden;
+        }
+        .player-cover .spin-ring {
+            position: absolute; width: 100%; height: 100%;
+            border: 2px solid transparent; border-top-color: var(--gold);
+            border-radius: 50%; animation: spin 3s linear infinite;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .player-cover.spinning .spin-ring { opacity: 1; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .player-text h4 { font-family: 'Amiri', serif; font-size: 1rem; color: var(--text); margin-bottom: 2px; }
+        .player-text span { font-size: 0.8rem; color: var(--text-muted); }
+        .player-controls { display: flex; align-items: center; gap: 8px; }
+        .ctrl-btn {
+            width: 42px; height: 42px; border-radius: 12px; border: none;
+            background: transparent; color: var(--text-muted); font-size: 1rem;
+            cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ctrl-btn:hover { color: var(--gold); background: rgba(200,169,81,0.08); }
+        .ctrl-btn.play-pause {
+            width: 52px; height: 52px; border-radius: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+            color: var(--bg); font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(200,169,81,0.35);
+        }
+        .ctrl-btn.play-pause:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 30px rgba(200,169,81,0.5); color: var(--bg);
+        }
+        .ctrl-btn.active-repeat { color: var(--emerald-light); }
+        .player-extra { display: flex; align-items: center; gap: 14px; min-width: 200px; justify-content: flex-end; }
+        .time-display { font-size: 0.8rem; color: var(--text-muted); font-variant-numeric: tabular-nums; direction: ltr; }
+        .volume-control { display: flex; align-items: center; gap: 8px; }
+        .volume-slider {
+            -webkit-appearance: none; width: 80px; height: 4px;
+            border-radius: 4px; background: rgba(200,169,81,0.15); outline: none; direction: ltr;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 14px; height: 14px;
+            border-radius: 50%; background: var(--gold); cursor: pointer;
+            box-shadow: 0 0 6px rgba(200,169,81,0.4);
+        }
+
+        .toast-container {
+            position: fixed; top: 85px; left: 50%; transform: translateX(-50%);
+            z-index: 300; display: flex; flex-direction: column; gap: 8px; align-items: center;
+        }
+        .toast {
+            background: rgba(13, 21, 37, 0.95); backdrop-filter: blur(15px);
+            border: 1px solid var(--border); color: var(--text);
+            padding: 12px 24px; border-radius: 12px; font-size: 0.9rem;
+            animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s forwards;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .toast i { color: var(--gold); }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes toastOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-10px); } }
+
+        .loader { display: flex; justify-content: center; padding: 4rem; }
+        .loader-spinner {
+            width: 48px; height: 48px; border: 3px solid var(--border);
+            border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+
+        .fade-in { animation: fadeSlideIn 0.5s ease both; }
+
+        .mobile-nav {
+            display: none; position: fixed; bottom: 90px; left: 0; right: 0; z-index: 150;
+            background: rgba(10, 17, 34, 0.95); backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border); padding: 8px; justify-content: space-around;
+        }
+        .mobile-nav button {
+            background: none; border: none; color: var(--text-muted);
+            padding: 8px 16px; border-radius: 10px; cursor: pointer;
+            font-family: 'Cairo', sans-serif; font-size: 0.75rem;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            transition: all 0.3s;
+        }
+        .mobile-nav button i { font-size: 1.1rem; }
+        .mobile-nav button.active { color: var(--gold); }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+        html { scroll-behavior: smooth; }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .hero { padding: 3rem 1.5rem 2rem; }
@@ -865,60 +393,9 @@
             .player-extra { min-width: auto; }
             .volume-control { display: none; }
             .nav-links { display: none; }
+            .mobile-nav { display: flex !important; }
             .stats-row { gap: 1.5rem; }
-            .mobile-nav {
-                display: flex !important;
-            }
         }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            bottom: 90px;
-            left: 0;
-            right: 0;
-            z-index: 150;
-            background: rgba(10, 17, 34, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border);
-            padding: 8px;
-            justify-content: space-around;
-        }
-
-        .mobile-nav button {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.75rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            transition: all 0.3s;
-        }
-
-        .mobile-nav button i { font-size: 1.1rem; }
-        .mobile-nav button.active { color: var(--gold); }
-
-        /* شريط التمرير */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
-
-        /* أنيميشن الظهور */
-        .fade-in {
-            animation: fadeSlideIn 0.5s ease both;
-        }
-
-        .stagger-1 { animation-delay: 0.05s; }
-        .stagger-2 { animation-delay: 0.1s; }
-        .stagger-3 { animation-delay: 0.15s; }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -926,19 +403,14 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        /* سكرول ملس */
-        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
-    <!-- خلفية الجسيمات -->
     <canvas id="particles-canvas"></canvas>
     <div class="islamic-pattern"></div>
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
-    <!-- الهيدر -->
     <header>
         <div class="logo">
             <div class="logo-icon"><i class="fas fa-quran"></i></div>
@@ -957,9 +429,7 @@
         </nav>
     </header>
 
-    <!-- المحتوى -->
     <div class="content-wrapper">
-        <!-- قسم الهيرو -->
         <section class="hero" id="hero-section">
             <div class="hero-ornament">
                 <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -989,7 +459,6 @@
             </div>
         </section>
 
-        <!-- قسم القراء -->
         <section id="reciters-section" class="section" style="display:none;">
             <div class="section-header">
                 <h2 class="section-title"><i class="fas fa-microphone-alt"></i> اختر القارئ</h2>
@@ -998,7 +467,6 @@
             <div class="reciters-grid" id="reciters-grid"></div>
         </section>
 
-        <!-- قسم السور -->
         <section id="surahs-section" class="section surahs-section">
             <button class="back-btn" onclick="goBackToReciters()">
                 <i class="fas fa-arrow-right"></i> العودة للقراء
@@ -1012,7 +480,6 @@
             <div class="surahs-grid" id="surahs-grid"></div>
         </section>
 
-        <!-- قسم المفضلة -->
         <section id="favorites-section" class="section favorites-section">
             <div class="section-header">
                 <h2 class="section-title"><i class="fas fa-heart"></i> المفضلة</h2>
@@ -1021,7 +488,6 @@
         </section>
     </div>
 
-    <!-- شريط التنقل للموبايل -->
     <div class="mobile-nav" role="navigation" aria-label="القائمة">
         <button class="active" data-section="home" onclick="showSection('home')">
             <i class="fas fa-home"></i> الرئيسية
@@ -1034,7 +500,6 @@
         </button>
     </div>
 
-    <!-- المشغل -->
     <div class="player" id="player" role="region" aria-label="مشغل الصوت">
         <div class="player-progress-bar" id="progress-bar" onclick="seekAudio(event)">
             <div class="player-progress-fill" id="progress-fill"></div>
@@ -1052,7 +517,7 @@
             </div>
             <div class="player-controls">
                 <button class="ctrl-btn" onclick="playPrev()" aria-label="السابق"><i class="fas fa-forward"></i></button>
-                <button class="ctrl-btn play-pause" id="play-pause-btn" onclick="togglePlay()" aria-label="تشغيل/إيقاف">
+                <button class="ctrl-btn play-pause" id="play-pause-btn" onclick="togglePlay()" aria-label="تشغيل">
                     <i class="fas fa-play" id="play-icon"></i>
                 </button>
                 <button class="ctrl-btn" onclick="playNext()" aria-label="التالي"><i class="fas fa-backward"></i></button>
@@ -1070,16 +535,11 @@
         </div>
     </div>
 
-    <!-- حاوية التوست -->
     <div class="toast-container" id="toast-container"></div>
-
-    <!-- عنصر الصوت -->
     <audio id="audio-player" preload="auto"></audio>
 
     <script>
-        // ============================
         // أسماء السور وعدد آياتها
-        // ============================
         const surahData = [
             {name:"الفاتحة",verses:7},{name:"البقرة",verses:286},{name:"آل عمران",verses:200},{name:"النساء",verses:176},
             {name:"المائدة",verses:120},{name:"الأنعام",verses:165},{name:"الأعراف",verses:206},{name:"الأنفال",verses:75},
@@ -1112,9 +572,7 @@
             {name:"الفلق",verses:5},{name:"الناس",verses:6}
         ];
 
-        // ============================
         // متغيرات الحالة
-        // ============================
         const API_BASE = 'https://www.mp3quran.net/api/v3';
         let allReciters = [];
         let filteredReciters = [];
@@ -1131,14 +589,12 @@
         const audio = document.getElementById('audio-player');
         audio.volume = 0.8;
 
-        // ============================
-        // جسيمات الخلفية الذهبية
-        // ============================
+        // جسيمات الخلفية الذهبية المتحركة
         (function initParticles() {
             const canvas = document.getElementById('particles-canvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            const PARTICLE_COUNT = 50;
+            const COUNT = 50;
 
             function resize() {
                 canvas.width = window.innerWidth;
@@ -1147,8 +603,7 @@
             resize();
             window.addEventListener('resize', resize);
 
-            // إنشاء الجسيمات
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
+            for (let i = 0; i < COUNT; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -1166,23 +621,19 @@
                     p.x += p.speedX;
                     p.y += p.speedY;
                     p.pulse += 0.02;
-
-                    // إعادة الجسيمات عند خروجها من الشاشة
                     if (p.x < 0) p.x = canvas.width;
                     if (p.x > canvas.width) p.x = 0;
                     if (p.y < 0) p.y = canvas.height;
                     if (p.y > canvas.height) p.y = 0;
 
-                    const currentOpacity = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+                    const op = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(200, 169, 81, ${currentOpacity})`;
+                    ctx.arc(p.x, p.y, Math.max(0.1, p.size), 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(200,169,81,${op})`;
                     ctx.fill();
-
-                    // توهج خفيف
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(200, 169, 81, ${currentOpacity * 0.15})`;
+                    ctx.arc(p.x, p.y, Math.max(0.1, p.size * 3), 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(200,169,81,${op * 0.15})`;
                     ctx.fill();
                 });
                 requestAnimationFrame(animate);
@@ -1190,25 +641,22 @@
             animate();
         })();
 
-        // ============================
         // جلب بيانات القراء من API
-        // ============================
         async function fetchReciters() {
             const grid = document.getElementById('reciters-grid');
             grid.innerHTML = '<div class="loader"><div class="loader-spinner"></div></div>';
 
             try {
                 const response = await fetch(`${API_BASE}/reciters?language=ar`);
-                if (!response.ok) throw new Error('فشل الاتصال بالخادم');
+                if (!response.ok) throw new Error('فشل الاتصال');
                 const data = await response.json();
-
                 if (data && data.reciters && data.reciters.length > 0) {
                     allReciters = data.reciters;
                 } else {
                     throw new Error('لا توجد بيانات');
                 }
             } catch (error) {
-                console.warn('فشل جلب البيانات من API، استخدام البيانات الاحتياطية:', error);
+                console.warn('استخدام البيانات الاحتياطية:', error.message);
                 allReciters = getFallbackReciters();
             }
 
@@ -1221,22 +669,20 @@
         // بيانات احتياطية في حال فشل الـ API
         function getFallbackReciters() {
             return [
-                {id:"ar afs", name:"مشاري العفاسي", letter:"م", moqri:"Mishary Alafasy", recitations:[{id:"afs",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/afs"}]},
-                {id:"ar abdmb", name:"عبد الباسط عبد الصمد", letter:"ع", moqri:"Abdul Basit", recitations:[{id:"abdmb",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/abdmb"}]},
-                {id:"ar husr", name:"محمود خليل الحصري", letter:"م", moqri:"Mahmoud Khalil Alhusary", recitations:[{id:"husr",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/husr"}]},
-                {id:"ar sudais", name:"عبد الرحمن السديس", letter:"ع", moqri:"Abdulrahman Al-Sudais", recitations:[{id:"sudais",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/sudais"}]},
-                {id:"ar maher", name:"ماهر المعيقلي", letter:"م", moqri:"Maher Al-Muaiqly", recitations:[{id:"maher",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/maher"}]},
-                {id:"ar fhd", name:"فهد العتيبي", letter:"ف", moqri:"Fahd Al-Otaibi", recitations:[{id:"fhd",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/fhd"}]},
-                {id:"ar yasser", name:"ياسر الدوسري", letter:"ي", moqri:"Yasser Al-Dosari", recitations:[{id:"yasser",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/yasser"}]},
-                {id:"ar khaled", name:"خالد الجليل", letter:"خ", moqri:"Khalid Al-Jileel", recitations:[{id:"khaled",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/khaled"}]},
-                {id:"ar minsh", name:"محمد صديق المنشاوي", letter:"م", moqri:"Mohammad Siddiq Al-Minshawi", recitations:[{id:"minsh",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/minsh"}]},
-                {id:"ar bana", name:"محمد أيوب", letter:"م", moqri:"Mohammad Ayyoub", recitations:[{id:"bana",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/ayyub"}]},
+                {id:"afs", name:"مشاري العفاسي", letter:"م", moqri:"Mishary Alafasy", recitations:[{id:"afs",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/afs"}]},
+                {id:"abdmb", name:"عبد الباسط عبد الصمد", letter:"ع", moqri:"Abdul Basit", recitations:[{id:"abdmb",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/abdmb"}]},
+                {id:"husr", name:"محمود خليل الحصري", letter:"م", moqri:"Mahmoud Khalil Alhusary", recitations:[{id:"husr",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/husr"}]},
+                {id:"sudais", name:"عبد الرحمن السديس", letter:"ع", moqri:"Abdulrahman Al-Sudais", recitations:[{id:"sudais",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/sudais"}]},
+                {id:"maher", name:"ماهر المعيقلي", letter:"م", moqri:"Maher Al-Muaiqly", recitations:[{id:"maher",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/maher"}]},
+                {id:"fhd", name:"فهد العتيبي", letter:"ف", moqri:"Fahd Al-Otaibi", recitations:[{id:"fhd",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/fhd"}]},
+                {id:"yasser", name:"ياسر الدوسري", letter:"ي", moqri:"Yasser Al-Dosari", recitations:[{id:"yasser",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/yasser"}]},
+                {id:"khaled", name:"خالد الجليل", letter:"خ", moqri:"Khalid Al-Jileel", recitations:[{id:"khaled",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/khaled"}]},
+                {id:"minsh", name:"محمد صديق المنشاوي", letter:"م", moqri:"Al-Minshawi", recitations:[{id:"minsh",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/minsh"}]},
+                {id:"ayyub", name:"محمد أيوب", letter:"م", moqri:"Mohammad Ayyoub", recitations:[{id:"ayyub",name:"حفص عن عاصم",surah_list:"1-114",musshaf_id:1,audio_url:"https://server8.mp3quran.net/ayyub"}]},
             ];
         }
 
-        // ============================
         // بناء فلاتر الحروف
-        // ============================
         function buildLetterFilters() {
             const container = document.getElementById('letter-filters');
             const letters = ['الكل', ...new Set(allReciters.map(r => r.letter || '').filter(Boolean)).sort()];
@@ -1250,65 +696,51 @@
             document.querySelectorAll('.letter-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent === letter);
             });
-            if (letter === 'الكل') {
-                filteredReciters = [...allReciters];
-            } else {
-                filteredReciters = allReciters.filter(r => r.letter === letter);
-            }
+            filteredReciters = letter === 'الكل'
+                ? [...allReciters]
+                : allReciters.filter(r => r.letter === letter);
             renderReciters();
         }
 
-        // ============================
         // عرض بطاقات القراء
-        // ============================
         function renderReciters() {
             const grid = document.getElementById('reciters-grid');
             if (filteredReciters.length === 0) {
-                grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><p>لا يوجد قراء بهذا الحرف</p></div>`;
+                grid.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>لا يوجد قراء بهذا الحرف</p></div>';
                 return;
             }
-
             grid.innerHTML = filteredReciters.map((reciter, idx) => {
-                // نحسب عدد السور من أول رواية
                 const recitation = reciter.recitations && reciter.recitations[0];
                 let surahCount = 0;
                 if (recitation && recitation.surah_list) {
                     surahCount = parseSurahList(recitation.surah_list).length;
                 }
                 const isFav = favReciters.includes(reciter.id);
-                const recName = reciter.name || 'غير معروف';
-                const engName = reciter.moqri || '';
-
                 return `
                     <div class="reciter-card fade-in" style="animation-delay:${idx * 0.03}s" onclick="selectReciter(${idx})">
-                        <button class="reciter-fav ${isFav ? 'active' : ''}" onclick="event.stopPropagation();toggleFavReciter('${reciter.id}', this)" aria-label="إضافة للمفضلة">
+                        <button class="reciter-fav ${isFav ? 'active' : ''}" onclick="event.stopPropagation();toggleFavReciter('${reciter.id}', this)" aria-label="مفضلة">
                             <i class="fas fa-heart"></i>
                         </button>
                         <div class="rc-top">
                             <div class="reciter-avatar"><i class="fas fa-user"></i></div>
                             <div class="reciter-info">
-                                <h3>${recName}</h3>
-                                <span>${engName}</span>
+                                <h3>${reciter.name || 'غير معروف'}</h3>
+                                <span>${reciter.moqri || ''}</span>
                             </div>
                         </div>
                         <div class="reciter-meta">
                             <span class="meta-tag"><i class="fas fa-book-open" style="margin-left:4px;"></i> ${surahCount} سورة</span>
                             ${recitation ? `<span class="meta-tag">${recitation.name || ''}</span>` : ''}
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }).join('');
         }
 
-        // ============================
-        // تحليل قائمة السور
-        // ============================
+        // تحليل قائمة السور (يدعم "1,2,3" و "1-114" ومزيجها)
         function parseSurahList(listStr) {
             if (!listStr) return [];
             const result = [];
-            // قد تكون "1,2,3" أو "1-114" أو مزيج
-            const parts = listStr.split(',');
-            parts.forEach(part => {
+            listStr.split(',').forEach(part => {
                 part = part.trim();
                 if (part.includes('-')) {
                     const [start, end] = part.split('-').map(Number);
@@ -1323,84 +755,66 @@
             return [...new Set(result)].sort((a, b) => a - b);
         }
 
-        // ============================
-        // اختيار قارئ
-        // ============================
+        // اختيار قارئ وعرض سوره
         function selectReciter(index) {
             const reciter = filteredReciters[index];
             if (!reciter || !reciter.recitations || reciter.recitations.length === 0) {
                 showToast('لا تتوفر تلاوات لهذا القارئ', 'fa-exclamation-circle');
                 return;
             }
-
             currentReciter = reciter;
-            // نستخدم أول رواية متاحة
             currentRecitation = reciter.recitations[0];
             currentSurahList = parseSurahList(currentRecitation.surah_list);
 
             document.getElementById('current-reciter-name').textContent = reciter.name;
             document.getElementById('recitation-name').textContent = currentRecitation.name || '';
             document.getElementById('surah-search').value = '';
-
             renderSurahs(currentSurahList);
             showSection('surahs');
         }
 
-        // ============================
         // عرض بطاقات السور
-        // ============================
         function renderSurahs(surahs) {
             const grid = document.getElementById('surahs-grid');
             if (surahs.length === 0) {
-                grid.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><p>لا توجد نتائج</p></div>`;
+                grid.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>لا توجد نتائج</p></div>';
                 return;
             }
-
             grid.innerHTML = surahs.map((num, idx) => {
                 const data = surahData[num - 1];
-                const isPlaying = currentSurahIndex === num - 1 && isPlaying;
+                const playing = currentSurahIndex === num - 1 && isPlaying;
                 const isFav = favorites.some(f => f.reciterId === currentReciter.id && f.surah === num);
-
                 return `
-                    <div class="surah-card fade-in ${isPlaying ? 'playing' : ''}" style="animation-delay:${idx * 0.015}s"
-                         onclick="playSurah(${num})" data-surah="${num}" data-name="${data.name}">
-                        <div class="play-icon"><i class="fas ${isPlaying ? 'fa-volume-up' : 'fa-play'}"></i></div>
-                        <button class="fav-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation();toggleFavSurah(${num}, this)" aria-label="إضافة للمفضلة">
+                    <div class="surah-card fade-in ${playing ? 'playing' : ''}" style="animation-delay:${idx * 0.015}s"
+                         onclick="playSurah(${num})" data-surah="${num}">
+                        <div class="play-icon"><i class="fas ${playing ? 'fa-volume-up' : 'fa-play'}"></i></div>
+                        <button class="fav-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation();toggleFavSurah(${num}, this)" aria-label="مفضلة">
                             <i class="fas fa-heart"></i>
                         </button>
                         <div class="surah-num">${num}</div>
                         <div class="surah-name">${data.name}</div>
                         <div class="surah-verses">${data.verses} آية</div>
-                    </div>
-                `;
+                    </div>`;
             }).join('');
         }
 
         function filterSurahs() {
-            const query = document.getElementById('surah-search').value.trim();
-            if (!query) {
-                renderSurahs(currentSurahList);
-                return;
-            }
-            const filtered = currentSurahList.filter(num => {
-                const data = surahData[num - 1];
-                return data.name.includes(query) || String(num).includes(query);
-            });
-            renderSurahs(filtered);
+            const q = document.getElementById('surah-search').value.trim();
+            if (!q) { renderSurahs(currentSurahList); return; }
+            renderSurahs(currentSurahList.filter(num => {
+                const d = surahData[num - 1];
+                return d.name.includes(q) || String(num).includes(q);
+            }));
         }
 
-        // ============================
         // تشغيل سورة
-        // ============================
         function playSurah(num) {
             if (!currentRecitation || !currentRecitation.audio_url) {
                 showToast('رابط الصوت غير متوفر', 'fa-exclamation-circle');
                 return;
             }
-
             currentSurahIndex = num - 1;
             const audioUrl = `${currentRecitation.audio_url}/${String(num).padStart(3, '0')}.mp3`;
-
             audio.src = audioUrl;
             audio.load();
             audio.play().then(() => {
@@ -1415,25 +829,17 @@
             });
         }
 
-        // ============================
-        // تحديث واجهة المشغل
-        // ============================
         function updatePlayerUI(num) {
             const data = surahData[num - 1];
-            document.getElementById('player-surah').textContent = `سورة ${data.name}`;
+            document.getElementById('player-surah').textContent = 'سورة ' + data.name;
             document.getElementById('player-reciter').textContent = currentReciter.name;
         }
 
         function updatePlayButton() {
             const icon = document.getElementById('play-icon');
             const cover = document.getElementById('player-cover');
-            if (isPlaying) {
-                icon.className = 'fas fa-pause';
-                cover.classList.add('spinning');
-            } else {
-                icon.className = 'fas fa-play';
-                cover.classList.remove('spinning');
-            }
+            icon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+            cover.classList.toggle('spinning', isPlaying);
         }
 
         function showPlayer() {
@@ -1443,39 +849,31 @@
         function highlightCurrentSurah(num) {
             document.querySelectorAll('.surah-card').forEach(card => {
                 const sNum = parseInt(card.dataset.surah);
-                card.classList.toggle('playing', sNum === num && isPlaying);
+                const isActive = sNum === num && isPlaying;
+                card.classList.toggle('playing', isActive);
                 const icon = card.querySelector('.play-icon i');
-                if (icon) {
-                    icon.className = sNum === num && isPlaying ? 'fas fa-volume-up' : 'fas fa-play';
-                }
+                if (icon) icon.className = isActive ? 'fas fa-volume-up' : 'fas fa-play';
             });
         }
 
-        // ============================
-        // أزرار التحكم
-        // ============================
+        // أزرار التحكم بالمشغل
         function togglePlay() {
             if (!audio.src) return;
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-            } else {
-                audio.play().catch(() => {});
-                isPlaying = true;
-            }
+            if (isPlaying) { audio.pause(); isPlaying = false; }
+            else { audio.play().catch(() => {}); isPlaying = true; }
             updatePlayButton();
             highlightCurrentSurah(currentSurahIndex + 1);
         }
 
         function playNext() {
-            if (currentSurahList.length === 0) return;
+            if (!currentSurahList.length) return;
             const curIdx = currentSurahList.indexOf(currentSurahIndex + 1);
             const nextIdx = (curIdx + 1) % currentSurahList.length;
             playSurah(currentSurahList[nextIdx]);
         }
 
         function playPrev() {
-            if (currentSurahList.length === 0) return;
+            if (!currentSurahList.length) return;
             const curIdx = currentSurahList.indexOf(currentSurahIndex + 1);
             const prevIdx = curIdx <= 0 ? currentSurahList.length - 1 : curIdx - 1;
             playSurah(currentSurahList[prevIdx]);
@@ -1489,47 +887,37 @@
 
         function toggleMute() {
             audio.muted = !audio.muted;
-            const icon = document.getElementById('volume-icon');
-            icon.className = audio.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            document.getElementById('volume-icon').className = audio.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
         }
 
         function changeVolume(val) {
             audio.volume = val / 100;
             audio.muted = false;
             const icon = document.getElementById('volume-icon');
-            if (val == 0) icon.className = 'fas fa-volume-mute';
-            else if (val < 50) icon.className = 'fas fa-volume-down';
-            else icon.className = 'fas fa-volume-up';
+            icon.className = val == 0 ? 'fas fa-volume-mute' : val < 50 ? 'fas fa-volume-down' : 'fas fa-volume-up';
         }
 
         function seekAudio(e) {
             if (!audio.duration) return;
             const bar = document.getElementById('progress-bar');
             const rect = bar.getBoundingClientRect();
-            // لأن الصفحة RTL، نعكس الحساب
             const clickX = rect.right - e.clientX;
             const percent = Math.max(0, Math.min(1, clickX / rect.width));
             audio.currentTime = percent * audio.duration;
         }
 
-        // ============================
-        // أحداث الصوت
-        // ============================
+        // أحداث عنصر الصوت
         audio.addEventListener('timeupdate', () => {
             if (!audio.duration) return;
-            const percent = (audio.currentTime / audio.duration) * 100;
-            document.getElementById('progress-fill').style.width = percent + '%';
+            const pct = (audio.currentTime / audio.duration) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
             document.getElementById('time-display').textContent =
-                `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+                formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
         });
 
         audio.addEventListener('ended', () => {
-            if (isRepeat) {
-                audio.currentTime = 0;
-                audio.play();
-            } else {
-                playNext();
-            }
+            if (isRepeat) { audio.currentTime = 0; audio.play(); }
+            else { playNext(); }
         });
 
         audio.addEventListener('pause', () => {
@@ -1541,7 +929,7 @@
         audio.addEventListener('play', () => {
             isPlaying = true;
             updatePlayButton();
-            highlightCurrentSurahIndex + 1);
+            highlightCurrentSurah(currentSurahIndex + 1);
         });
 
         audio.addEventListener('error', () => {
@@ -1552,36 +940,25 @@
             if (isNaN(sec)) return '00:00';
             const m = Math.floor(sec / 60);
             const s = Math.floor(sec % 60);
-            return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
         }
 
-        // ============================
         // التنقل بين الأقسام
-        // ============================
         function showSection(section) {
-            // إخفاء كل الأقسام
             document.getElementById('hero-section').style.display = section === 'home' ? 'block' : 'none';
             document.getElementById('reciters-section').style.display = section === 'reciters' ? 'block' : 'none';
             document.getElementById('surahs-section').classList.toggle('visible', section === 'surahs');
             document.getElementById('favorites-section').classList.toggle('visible', section === 'favorites');
-
             if (section === 'favorites') renderFavorites();
-
-            // تحديث أزرار التنقل
             document.querySelectorAll('.nav-btn, .mobile-nav button').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.section === section);
             });
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function goBackToReciters() {
-            showSection('reciters');
-        }
+        function goBackToReciters() { showSection('reciters'); }
 
-        // ============================
-        // المفضلة
-        // ============================
+        // إدارة المفضلة
         function toggleFavSurah(surahNum, btn) {
             const idx = favorites.findIndex(f => f.reciterId === currentReciter.id && f.surah === surahNum);
             if (idx > -1) {
@@ -1620,36 +997,28 @@
         function renderFavorites() {
             const container = document.getElementById('favorites-content');
             if (favorites.length === 0) {
-                container.innerHTML = `<div class="empty-state"><i class="fas fa-heart"></i><p>لم تضف أي سورة للمفضلة بعد</p></div>`;
+                container.innerHTML = '<div class="empty-state"><i class="fas fa-heart"></i><p>لم تضف أي سورة للمفضلة بعد</p></div>';
                 return;
             }
-
-            container.innerHTML = `
-                <div class="surahs-grid">
-                    ${favorites.map((fav, idx) => `
-                        <div class="surah-card fade-in" style="animation-delay:${idx * 0.02}s" onclick="playFavorite(${idx})">
-                            <div class="play-icon"><i class="fas fa-play"></i></div>
-                            <button class="fav-btn active" onclick="event.stopPropagation();removeFav(${idx})" aria-label="إزالة من المفضلة">
-                                <i class="fas fa-heart"></i>
-                            </button>
-                            <div class="surah-num">${fav.surah}</div>
-                            <div class="surah-name">${fav.surahName}</div>
-                            <div class="surah-verses">${fav.reciterName}</div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
+            container.innerHTML = '<div class="surahs-grid">' + favorites.map((fav, idx) => `
+                <div class="surah-card fade-in" style="animation-delay:${idx * 0.02}s" onclick="playFavorite(${idx})">
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                    <button class="fav-btn active" onclick="event.stopPropagation();removeFav(${idx})" aria-label="إزالة">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <div class="surah-num">${fav.surah}</div>
+                    <div class="surah-name">${fav.surahName}</div>
+                    <div class="surah-verses">${fav.reciterName}</div>
+                </div>`).join('') + '</div>';
         }
 
         function playFavorite(idx) {
             const fav = favorites[idx];
             if (!fav) return;
-            // ننشئ كائن قارئ مؤقت
             currentReciter = { id: fav.reciterId, name: fav.reciterName };
             currentRecitation = fav.recitation;
             currentSurahList = parseSurahList(fav.recitation.surah_list);
             currentSurahIndex = fav.surah - 1;
-
             audio.src = fav.audioUrl;
             audio.load();
             audio.play().then(() => {
@@ -1669,34 +1038,24 @@
             showToast('تم الإزالة من المفضلة', 'fa-heart-broken');
         }
 
-        // ============================
-        // التوست
-        // ============================
-        function showToast(msg, icon = 'fa-check-circle') {
+        // إشعارات التوست
+        function showToast(msg, icon) {
+            icon = icon || 'fa-check-circle';
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.innerHTML = `<i class="fas ${icon}"></i> ${msg}`;
+            toast.innerHTML = '<i class="fas ' + icon + '"></i> ' + msg;
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 3200);
         }
 
-        // ============================
         // اختصارات لوحة المفاتيح
-        // ============================
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT') return;
-            switch(e.code) {
-                case 'Space':
-                    e.preventDefault();
-                    togglePlay();
-                    break;
-                case 'ArrowRight':
-                    playNext();
-                    break;
-                case 'ArrowLeft':
-                    playPrev();
-                    break;
+            switch (e.code) {
+                case 'Space': e.preventDefault(); togglePlay(); break;
+                case 'ArrowRight': playNext(); break;
+                case 'ArrowLeft': playPrev(); break;
                 case 'ArrowUp':
                     e.preventDefault();
                     audio.volume = Math.min(1, audio.volume + 0.1);
@@ -1712,9 +1071,7 @@
             }
         });
 
-        // ============================
-        // تهيئة الصفحة
-        // ============================
+        // بدء التطبيق
         fetchReciters();
     </script>
 </body>
